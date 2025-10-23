@@ -9,7 +9,7 @@ from aiogram.filters import CommandStart
 from aiogram.exceptions import TelegramBadRequest
 from config import ADMIN_IDS
 
-from config import ADMIN_ID, CONTACT_URL, CONTACT_BUTTON_TEXT
+from config import CONTACT_URL, CONTACT_BUTTON_TEXT
 from keyboards import (
     get_user_keyboard, get_admin_keyboard,
     get_settings_keyboard, get_greeting_menu,
@@ -156,7 +156,7 @@ async def admin_analytics(message: Message):
 # ---------- Настройки ----------
 @router.message(F.text == "⚙️ Настройки")
 async def settings_menu(message: Message):
-    if message.from_user.id == ADMIN_ID:
+    if message.from_user.id in ADMIN_IDS:
         text = (
             "🛠 <b>Настройки</b>\n\n"
             "Что будем менять?\n"
